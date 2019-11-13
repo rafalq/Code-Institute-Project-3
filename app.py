@@ -34,7 +34,7 @@ def rank_edit():
 
 @app.route('/')
 def cookbook():
-    mongo.db.recipes.find().sort('recipe_title') = recipes
+    RECIPES = mongo.db.recipes.find().sort('recipe_title')
     cuisines_all = mongo.db.recipes.find({},{'cuisine':1, '_id':0}).count()
     count_cuisines = mongo.db.recipes.aggregate([ {'$group': { '_id': {"cuisine": "$cuisine"}, 'count': {'$sum': 1} } } ])
     
@@ -68,7 +68,7 @@ def cookbook():
             if(recipe["vegeterian"] is not None):
                 veg_counter += 1
     
-    return render_template('cookbook.html', recipes=recipes, cuisines_all=cuisines_all,count_cuisines=count_cuisines, five_counter=five_counter, four_counter=four_counter, three_counter=three_counter, two_counter=two_counter, one_counter=one_counter, no_review_counter=no_review_counter, veg_counter=veg_counter, count_meals=count_meals)
+    return render_template('cookbook.html', recipes=RECIPES, cuisines_all=cuisines_all,count_cuisines=count_cuisines, five_counter=five_counter, four_counter=four_counter, three_counter=three_counter, two_counter=two_counter, one_counter=one_counter, no_review_counter=no_review_counter, veg_counter=veg_counter, count_meals=count_meals)
 
 @app.route('/found')
 def found():
