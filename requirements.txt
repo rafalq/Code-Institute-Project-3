@@ -1,0 +1,17 @@
+Click==7.0
+Django==1.11.17
+dnspython==1.16.0
+Flask==1.1.1
+Flask-PyMongo==2.3.0
+Flask-WTF==0.14.2
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+mysql-connector==2.2.9
+pymongo==3.9.0
+PyMySQL==0.9.3
+pytz==2019.3
+virtualenv==16.7.5
+virtualenvwrapper-win==1.2.5
+Werkzeug==0.15.4
+WTForms==2.2.1
