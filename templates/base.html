@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway|Cabin|Roboto|Cormorant+Garamond&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/da5655adfb.js" crossorigin="anonymous"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+	
+	<title>Plenty of Dish</title>
+</head>
+
+<body>
+	<!-- Home Header -->
+	<header class="row">
+		<a href="{{ url_for('cookbook')}}" id="logo" class="col s12 center">Plenty of Dish</a>
+	</header>
+	<!-- Share and Search section-->
+	<nav id="navbar" class="row blue-grey lighten-3">
+		<form id="nav-form" class="row col m6 s12" action="{{ url_for('search')}}" method="POST">
+			<i id="home-search-icon" class="col s2 material-icons center">search</i>
+			<input id="nav-input" name="search_name" type="search" class="input-field col s7 m6 l8 center white" placeholder="Search">
+			<button id="nav-button" class="btn waves-effect waves-light col s1" type="submit" name="action">GO</button>
+		</form>
+		<div id="share-recipe" class="row col m6 s12">
+			<a href="{{ url_for('add_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
+			<span id="logo-span" class="badge col m4 hide-on-med-and-down" data-badge-caption="recipes"></span>
+		</div>
+	</nav>
+	<!-- Flash -->
+	<div id="flash-div" class="row">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul id="flash-message-section" class="col s12">
+				{% for f_message in messages %}
+				<li id="flash-message">{{ f_message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		{% endwith %}
+	</div>
+	
+<div class="row"><!-- Main wrapper NEEDS THE CLOSE TAG!-->
+	<!--Statistics-->	
+	<ul class="collapsible expandable col s12 m3">
+		<!-- Cuisine -->
+		<li class="active">
+			<div class="row collapsible-header base-table-header">
+				<span class="col s10">Cuisine</span>
+				<i class="material-icons arrow-icon col s1 right">keyboard_arrow_down</i>
+			</div>
+			<div class="collapsible-body">
+				{% for x in count_cuisines %}
+				<form class="base-form row" action="{{ url_for('search')}}" method="POST">
+					<div class="base-cuisine-td">
+						<button id="base-form-button-cuisine" class="row col s12" type="submit" name="action">
+							<input id="cuisine-found" class="col s10 m8 l10" name="search_name" type="text" value="{{x._id.cuisine}}" readonly>
+							<span class="base-badge-cuisine badge col s2 right">{{x.count}}</span>
+						</button>	
+					</div>	
+				</form>		
+				{% endfor %}
+				<!-- Veg -->
+				<form class="base-form row">
+					<div class="base-cuisine-td veg-base-cuisine-td">
+						<a href="{{ url_for('veg') }}" id="base-form-button-cuisine" class="row col s12 vege-a center">Vegeterian	
+							<span id="base-vege-badge" class="base-badge-cuisine badge col s2 right">{{veg_counter}}
+							</span>
+						</a>
+					</div>
+				</form>
+			</div>	
+		</li>
+		<!-- Meal Type -->
+		<li id="cuisine-type-header-base" class="active">	
+			<div class="row collapsible-header base-table-header">
+				<span class="col s10">Meal Type</span>
+				<i class="material-icons arrow-icon col s1 right">keyboard_arrow_down</i>
+			</div>
+			<div class="collapsible-body">
+				{% for y in count_meals %}
+				<form class="base-form row" action="{{ url_for('search')}}" method="POST">
+					<div class="base-cuisine-td">
+						<button id="base-form-button-cuisine" class="row col s12" type="submit" name="action">
+							<input id="cuisine-found" class="col s10 m8 l10" name="search_name" type="text" value="{{y._id.meal_type}}" readonly>
+							<span class="base-badge-cuisine badge col s2 right">{{y.count}}</span>
+						</button>	
+					</div>
+				</form>
+				{% endfor %}
+			</div>
+		</li>
+
+		<!-- Reviews  -->
+		<li class="active">
+			<div class="row collapsible-header base-table-header"><span class="col s10">Ratings</span><i class="material-icons arrow-icon col s1 right">keyboard_arrow_down</i></div>
+				<div id="body-base-review" class="collapsible-body">
+					<!-- 5 stars -->
+					<div class="base-review-td">
+						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+							<input id="search_rate" type="hidden" name="search_rate" value="5">
+							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Delicious" type="submit" name="action">
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<span class="base-badge-review badge align-right">{{five_counter}}</span>
+							</button>
+						</form>
+					</div>	
+					<!-- 4 stars -->
+					<div class="base-review-td">
+						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+							<input id="search_rate" type="hidden" name="search_rate" value="4">
+							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Very good" type="submit" name="action">
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<span class="base-badge-review badge">{{four_counter}}</span>
+							</button>		
+						</form>	
+					</div>
+					<!-- 3 stars -->
+					<div class="base-review-td">
+						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+							<input id="search_rate" type="hidden" name="search_rate" value="3">
+							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Good" type="submit" name="action">
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<span class="base-badge-review badge">{{three_counter}}</span>
+							</button>		
+						</form>		
+					</div>
+					<!-- 2 stars -->
+					<div class="base-review-td">
+						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+							<input id="search_rate" type="hidden" name="search_rate" value="2">
+							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Fine" type="submit" name="action">
+								<i class="base-review-star material-icons">star</i>
+								<i class="base-review-star material-icons">star</i>
+								<span class="base-badge-review badge">{{two_counter}}</span>
+							</button>	
+						</form>
+					</div>		
+				 <!-- 1 star -->
+					<div class="base-review-td">
+						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+							<input id="search_rate" type="hidden" name="search_rate" value="1">
+							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Bad" type="submit" name="action">
+								<i class="base-review-star material-icons">star</i>
+								<span class="base-badge-review badge">{{one_counter}}</span>
+							</button>	
+						</form>
+					</div>	
+					<!-- no stars -->
+					<div class="base-review-td">
+						<form class="base-form row" action="{{ url_for('no_review')}}" method="POST" >
+							<input id="search_rate" type="hidden" name="search_rate" value="4">
+							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="No reviews" type="submit" name="action">
+								<i class="base-review-star material-icons">star_border</i>
+								<span class="base-badge-review badge">{{no_review_counter}}</span>
+							</button>	
+						</form>
+					</div>	
+				</div>
+		</li>			
+	</ul>	
+{% block content %}
+{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">M.AutoInit();</script>
+<script>
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+  accordion: false
+});
+</script>
+</body>
+</html>

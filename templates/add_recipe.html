@@ -1,0 +1,158 @@
+{% extends 'base_for_form.html' %}
+{% block content %}
+<!-- Main wrapper -->
+<div id="add-recipe">
+<form action="{{ url_for('insert_recipe') }}" method="POST">
+	<!-- TOP content-->				
+	<div class="row">
+		<div class="col s12">	
+			<!-- Title -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">title</i>
+					<input id="recipe_title" name="recipe_title" type="text" class="validate" maxlength="30" required>
+					<label for="recipe_title">Recipe Title</label>
+				</div>
+			</div>	
+			<!-- Image/Meal -->
+			<div id="meal-type-img-section" class="row">
+				<!-- Meal -->
+				<ul id="meal-type-section" class="collapsible expandable col s4 left">
+					<i id="meal-type-icon" class="material-icons col s1 prefix">local_dining</i>
+					<li>
+						<div id="meal-type-header" class="collapsible-header base-table-header">
+							<span id="meal-type-span">Meal Type (required)</span>
+							<i id="add-recipe-icon-arrow" class="material-icons arrow-icon col s1 hide-on-small-only">keyboard_arrow_down</i>
+						</div>
+						
+						<div class="collapsible-body">
+							<div class="base-cuisine-td">
+								<a id="Appetizers" href="#" class="col s12 meal-type-link center">Appetizers</a>
+								<a id="Breakfast" href="#" class="col s12 meal-type-link center">Breakfast</a>
+								<a id="Lunch" href="#" class="col s12 meal-type-link center">Lunch</a>
+								<a id="Dinner" href="#" class="col s12 meal-type-link center">Dinner</a>
+								<a id="Dessert" href="#" class="col s12 meal-type-link center">Dessert</a>
+								
+								<input id="meal-type" name="meal_type" type="text" class="validate" value="" hidden required>
+							</div>	
+						</div>	
+					</li>
+				</ul>
+				<!-- Image -->
+				<div class="col s8 l7" id="add-top-img">
+					<div class="file-field input-field">
+						<div class="btn right" id="upload-button">
+							<span>Upload</span>
+							<i class="material-icons icon-button right">file_upload</i>
+							<input type="file">
+						</div>
+						<div class="file-path-wrapper">
+							<input name="image" class="file-path validate center" type="text" placeholder="Image" required>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<!-- Cuisine/Veg/Hot -->
+			<div class="row" id="add-cuisine-veg-hot">
+				<!-- Cuisine -->
+				<div class="input-field col s6">
+					<i class="material-icons prefix">room_service</i>
+					<input id="cuisine" name="cuisine" type="text" class="validate" maxlength="20" required>
+					<label for="cuisine">Cuisine</label>
+				</div>
+				<!-- Vegeterian -->
+				<div class="input-field col s4 l3">
+					<label id="edit-veg-label">
+						<input name="vegeterian" type="checkbox">
+						<span id="vegetarian-checkbox" class="form-checkbox">Vegeterian</span>
+					</label>
+				</div>
+				<!-- Hot -->
+				<div class="input-field col s2 l3 right">
+					<label>
+						<input name="hot" type="checkbox">
+						<span id="hot-checkbox" class="form-checkbox">Hot</span>
+					</label>
+				</div>
+			</div>
+			<!-- Serves/Prep/Cook -->
+			<div class="row" id="add-serve-prep-cook">
+				<!-- Serves -->
+				<div class="input-field col s4">
+					<i class="material-icons prefix">local_pizza</i>
+					<input id="servings" name="servings" type="text" class="validate" required>
+					<label for="servings">Serves</label>
+				</div>
+				<!-- Prep -->
+				<div class="input-field col s4">
+					<i class="material-icons prefix">schedule</i>
+					<input id="prep_time" name="prep_time" type="text" class="validate" required>
+					<label for="prep_time">Prep</label>
+				</div>
+				<!-- Cook -->
+				<div class="input-field col s4">
+					<i class="material-icons prefix">timer</i>
+					<input id="cook_time" name="cook_time" type="text" class="validate" required>
+					<label for="cook_time">Cook</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- BOTTOM content -->	
+		<!-- Ingredients -->	
+		<div class="row" id="add-ingr">
+			<div class="row input-field col s12">
+				<i class="material-icons prefix">shopping_basket</i>
+				<textarea id="ingredients" name="ingredients" class="materialize-textarea" required></textarea>
+				<label for="ingredients">Ingredients</label>
+			</div>
+		</div>
+		<!-- Short Description -->
+		<div class="row add-desc">
+			<div class="row input-field col s12">
+				<i class="material-icons prefix">chat</i>
+				<textarea id="short" name="short" class="materialize-textarea" required></textarea>
+				<label for="short">Short Description</label>
+			</div>
+		</div>	
+		<!-- Method -->	
+		<div class="row add-inst">
+			<div class="row input-field col s12">
+				<i class="material-icons prefix">description</i>
+				<textarea id="description" name="description" class="materialize-textarea" required></textarea>
+				<label for="description">Method</label>
+			</div>
+		</div>
+		<!-- Author/Submit button -->
+		<div class="row">
+			<!-- Author -->
+			<div class="input-field col s7 left">
+				<i class="material-icons prefix">account_circle</i>
+				<input name="author" id="icon_prefix" type="text" class="validate" required>
+				<label for="icon_prefix">Author</label>
+			</div>
+			<!-- Submit button -->
+			<div class="col s5">
+				<button id="add-button" class="btn waves-effect waves-light" type="submit">SUBMIT
+				<i class="material-icons icon-button right">playlist_add</i>
+				</button>
+			</div>	
+		</div>			
+</form>		
+</div>	<!-- Main wrapper -->
+</div> 	<!-- base_for_form.html -->	
+<script>
+var mealType = document.getElementsByClassName("meal-type-link");
+
+for(var i = 0 ; i < mealType.length; i++){
+	  mealType[i].addEventListener('click', mealClick, false ); 
+}
+	
+function mealClick(){
+	var inputValue = this.getAttribute('id');
+	document.getElementById("meal-type").setAttribute("value", inputValue);
+	document.getElementById("meal-type-span").textContent = inputValue;
+	document.getElementById("meal-type-span").style.color="black";
+}
+</script>
+{%endblock%}

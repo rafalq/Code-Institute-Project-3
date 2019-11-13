@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+	<link href="https://fonts.googleapis.com/css?family=Lato|Raleway|Cabin|Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/da5655adfb.js" crossorigin="anonymous"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">	
+</head>
+
+<body>
+<div class="container">
+	<!-- Home Header -->
+	<header class="row">
+		<a href="{{ url_for('cookbook')}}" id="logo" class="col s12 center">Plenty of Dish</a>
+	</header>		
+	<!-- Share and Search section-->
+	<nav id="navbar" class="row blue-grey lighten-3">
+		<form id="nav-form" class="row col m6 s12" action="{{ url_for('search')}}" method="POST">
+			<i id="home-search-icon" class="col s2 material-icons center hide-on-small-only">search</i>
+			<input id="nav-input" name="search_name" type="search" class="input-field col s9 m7 l8 center white" placeholder="Search">
+			<button id="nav-button" class="btn waves-effect waves-light col s1 right" type="submit" name="action">GO</button>
+		</form>
+		<a href="{{ url_for('add_recipe')}}" id="nav-your-recipe-link" class="col m6 s12 center">Share Your Recipe</a>
+	</nav>
+		
+	<!-- Main Wrapper -->
+	<div id="edit-background-color">
+		
+		<!-- TOP Content -->
+		<div class="row">			
+			<!-- Title/Author -->
+			<div id="edit-title" class="row hide-on-med-and-up">
+				<!-- Title -->
+				<div class="input-field col s12">
+					<h4 id="edit-recipe-title" for="recipe_title" class="center">
+					<a id="edit-recipe-title-link" href="{{ url_for('for_update', recipe_id = recipe._id) }}" class="tooltipped" data-position="left" data-tooltip="Update/Delete Form">{{recipe.recipe_title}}</a>
+					</h4>
+				</div>
+				<!-- Author -->
+				<div class="input-field col s12 center" id="edit-author-div">
+					<p>
+					<small>by</small><a id="edit-author-paragraph" href="{{ url_for('for_update', recipe_id = recipe._id) }}">&nbsp;{{recipe.author}}</a>
+					</p>
+				</div>
+			</div>					
+			<!-- TOP LEFT Content Image/Rank/Short -->	
+			<div id="edit-top-img" class="col s12 l6"> 
+				<div class="row">
+					<!-- Image -->
+					<a href="{{ url_for('for_update', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="top" data-tooltip="Update/Delete Form">
+					<img class="responsive-img col s12" src="../static/images/{{ recipe.image }}" alt="Recipe Image">
+					</a>
+					<!-- Rank -->
+					<div class="col s12 center">
+					{% if recipe.score %}
+						<p id="edit-rating-p"> 
+						{% for x in range(recipe.score // recipe.votes)%}
+						<i id="edit-card-star" class="material-icons">star</i>
+						{% endfor %}
+						<span id="edit-votes-span">({{recipe.votes}} ratings)</span>
+						</p>	
+					{% else %}
+						<p class="col s12 center">Waiting for your vote...</p>
+					{% endif %}
+					</div>
+					<!-- Short -->
+					<div class="col s12">
+						<p id="edit-cookbook-short">{{recipe.short}}</p>
+					</div>
+				</div>	
+			</div><!-- TOP LEFT Content Image/Rank/Short -->	
+			
+			<!-- TOP RIGHT Content -->
+			<div class="col s12 m12 l6">
+				<!-- Title/Author -->
+				<div id="edit-title" class="row show-on-medium-and-up hide-on-med-and-down">
+					<!-- Title on MEDIUM -->
+					<div class="input-field col s12">
+						<h4 id="edit-recipe-title" class="center">
+						<a id="edit-recipe-title-link" href="{{ url_for('for_update', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="left" data-tooltip="Update/Delete Form">{{recipe.recipe_title}}</a>
+						</h4>
+					</div>
+					<!-- Author -->		
+					<div class="input-field col s12 center" id="edit-author-div">
+						<p>
+						<small>by</small><a id="edit-author-paragraph" href="{{ url_for('for_update', recipe_id = recipe._id) }}">&nbsp;{{recipe.author}}</a>
+						</p>
+					</div>
+				</div>		
+				<!-- Meal/Veg/Hot -->
+				<div id="meal-veg-hot-section" class="row">
+					<!-- Meal -->
+					<div class="input-field col s6">
+						<i class="edit-icon material-icons prefix">local_dining</i>
+						<input id="meal-type" name="meal_type" type="text" class="validate" value="{{recipe.meal_type}}" disabled>
+						<label for="cuisine">Meal</label>
+					</div>
+					<!-- Hot/Veg -->
+					<div id="hot-vege-section" class="col s6 center">
+						<div class="row">
+							<!-- Veg -->
+							<div class="input-field col s1 center">
+								{% if recipe.vegeterian %}
+									<i class="fas fa-carrot tooltipped prefix" id="vege-icon" data-position="left" data-tooltip="Vegeterian"></i>
+								{% endif %}
+							</div>
+							<!-- Hot -->
+							<div class="input-field col s6">
+								{% if recipe.hot %}
+									<i class="fab fa-hotjar tooltipped prefix" id="hot-icon" data-position="left" data-tooltip="Hot"></i>
+								{% endif %}
+							</div>
+						</div>	
+					</div>
+				</div>	
+				<!-- Cuisine/Serves -->	
+				<div id="edit-cuisine-serves-section" class="row">
+					<!-- Cuisine -->	
+					<div id="edit-cuisine" class="input-field col s6">
+						<i class="edit-icon material-icons prefix">room_service</i>
+						<input id="cuisine" name="cuisine" type="text" class="validate" value="{{recipe.cuisine}}" disabled>
+						<label for="cuisine">Cuisine</label>
+					</div>
+					<!-- Serves -->
+					<div class="row">
+						<div id="edit-serves" class="input-field col s6">
+							<i class="edit-icon material-icons prefix">local_pizza</i>
+							<input id="servings" name="servings" type="text" class="validate" value="{{recipe.servings}}" disabled>
+							<label for="servings">Serves</label>
+						</div>			
+					</div>
+				</div>
+				<!-- Time -->
+				<div id="edit-time-section" class="row">
+					<div id="edit-prep" class="input-field col s6">
+						<i class="edit-icon material-icons prefix">schedule</i>
+						<input id="prep_time" name="prep_time" type="text" class="validate" value="{{recipe.prep_time}}" disabled>
+						<label for="prep_time">Prep</label>
+					</div>
+					<div id="edit-cook" class="input-field col s6">
+						<i class="edit-icon material-icons prefix">timer</i>
+						<input id="cook_time" name="cook_time" type="text" class="validate" value="{{recipe.cook_time}}" disabled>
+						<label for="cook_time">Cook</label>
+					</div>
+				</div>
+			</div><!-- TOP RIGHT Content -->
+			
+			<!-- Rate Section -->					
+			<form id="edit-review" action="{{ url_for('review_recipe', recipe_id = recipe._id) }}", method="POST">
+				<div class="col s12 center" id="edit-stars">
+					<!-- Rate Header -->
+					<p id="rate-recipe-p" class="col s12"><i class="fas fa-gavel"></i>Rate the recipe</p>
+						<!-- Rate Stars -->
+						<i id="star-1" class="material-icons star-rate tooltipped" data-position="bottom" data-tooltip="Bad" style="color: pink;"><span>star</span></i>
+						<i id="star-2" class="material-icons star-button star-rate tooltipped" data-position="bottom" data-tooltip="Fine" style="color: pink;">star</i>
+						<i id="star-3" class="material-icons star-button star-rate tooltipped" data-position="bottom" data-tooltip="Good" style="color: pink;">star</i>
+						<i id="star-4" class="material-icons star-button star-rate tooltipped" data-position="bottom" data-tooltip="Very Good" style="color: pink;">star</i>
+						<i id ="star-5" class="material-icons star-rate tooltipped" data-position="bottom" data-tooltip="Delicious" style="color: pink;">star</i>
+						<!-- Vote Input -->
+						<input type="hidden" name="vote" id="vote" value="0">
+						<!-- Vote Button -->
+						<button id="review-button" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Submit Your Vote" type="submit" name="action" disabled>VOTE<i class="material-icons icon-button right hide-on-small-only">thumb_up</i>
+						</button>
+				</div>
+			</form><!-- Rate Section -->
+		</div><!-- TOP Content -->
+		
+		<div class="divider"></div>
+
+		<!-- Ingredients/Tools -->	
+		<div class="row">
+			<!-- Ingredients -->
+			<div class="col s12 l6 ">
+				<a href="{{ url_for('for_update', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="bottom" data-tooltip="Update/Delete Form">
+				<h5 id="edit-ingr" class="edit-h col s12 center edit-middle-sections">Ingredients</h5></a>
+				<div class="input-field col s12 edit-middle-sections">
+					<i class="edit-icon material-icons prefix">shopping_basket</i>
+					<textarea id="edit-ingredients" name="ingredients" disabled>{{recipe.ingredients}}</textarea>
+				</div>
+			</div>
+			<!-- Tools -->		
+			<div id="edit-tools-section" class="col s12 l6">
+				<h5 id="edit-tools-h5" class="edit-h col s12 l10 center edit-middle-sections">Our Kitchen Tools<span class="new badge red darken-1 left"></span></h5>
+				<div id="edit-top-img" class="col s12">
+					<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}" alt="Recipe Image">	
+				</div>
+				<div class="col s12">
+					<p id="tools-p">Made in Germany exclusively for Plenty of Dish by Rolf Lampe, a maker of handcrafted blades, this chef's knife makes prep work fast and simple. 
+					The sharp, stainless steel blade allows for refined cuts and beautiful results in your pot or on your plate. 
+					Our knife is ideal for men and women and others!</p>
+				</div>
+			</div>
+		</div><!-- Ingredients/Tools -->
+
+		<div class="divider"></div>
+							
+		<!-- Method -->	
+		<div id="edit-method-wrapper" class="row">
+			<a href="{{ url_for('for_update', recipe_id = recipe._id) }}" class="edit-title-link">
+			<h5 id="edit-method" class="edit-h col s12 center edit-middle-sections  tooltipped" data-position="bottom" data-tooltip="Update/Delete Form">Method</h5></a>
+			<div class="input-field col s12 edit-middle-sections">
+				<i class="edit-icon material-icons prefix">description</i>
+				<textarea id="edit-description" name="description" disabled>{{recipe.description}}</textarea>
+			</div>				
+		</div>
+	</div><!-- Main Wrapper -->	
+</div><!-- div.container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">M.AutoInit();</script>
+
+<script>
+var firstStar = document.getElementById("star-1");
+var secondStar = document.getElementById("star-2");
+var thirdStar = document.getElementById("star-3"); 
+var fourthStar = document.getElementById("star-4");
+var fifthStar = document.getElementById("star-5");
+var vote = 0;
+
+firstStar.addEventListener('click',firstStarClick, false );
+secondStar.addEventListener('click',secondStarClick, false );
+thirdStar.addEventListener('click',thirdStarClick, false );
+fourthStar.addEventListener('click',fourthStarClick, false );
+fifthStar.addEventListener('click',fifthStarClick, false );
+
+function firstStarClick(){
+	if((this.style.color=="red") && (this.nextElementSibling.style.color=="pink")){
+		this.style.color="pink";
+		
+		score = 0;
+		vote.value = score;
+		
+		document.getElementById("review-button").setAttribute("disabled","");
+		document.getElementById("rate-recipe-p").style.color="gray";
+	}
+	else{
+	this.style.color="red";
+	secondStar.style.color="pink";
+	thirdStar.style.color="pink";
+	fourthStar.style.color="pink";
+	fifthStar.style.color="pink";
+	
+	score = 1;
+	vote.value = score;
+	console.log(score);
+	
+	document.getElementById("review-button").removeAttribute("disabled");
+	document.getElementById("rate-recipe-p").style.color="gainsboro";
+	}
+}
+function secondStarClick(){
+
+	this.style.color="red";
+	firstStar.style.color="red";
+	thirdStar.style.color="pink";
+	fourthStar.style.color="pink";
+	fifthStar.style.color="pink";
+	
+	score = 2;
+	vote.value = score;
+	
+	document.getElementById("review-button").removeAttribute("disabled");
+	document.getElementById("rate-recipe-p").style.color="gainsboro";
+}
+function thirdStarClick(){
+
+	this.style.color="red";
+	firstStar.style.color="red";
+	secondStar.style.color="red";
+	fourthStar.style.color="pink";
+	fifthStar.style.color="pink";
+	
+	score = 3;
+	vote.value = score;
+	
+	document.getElementById("review-button").removeAttribute("disabled");
+	document.getElementById("rate-recipe-p").style.color="gainsboro";
+}
+function fourthStarClick(){
+
+	this.style.color="red";
+	firstStar.style.color="red";
+	secondStar.style.color="red";
+	thirdStar.style.color="red";
+	fifthStar.style.color="pink";
+	
+	score = 4;
+	vote.value = score;
+	
+	document.getElementById("review-button").removeAttribute("disabled");
+	document.getElementById("rate-recipe-p").style.color="gainsboro";
+}
+function fifthStarClick(){
+
+	this.style.color="red";
+	firstStar.style.color="red";
+	secondStar.style.color="red";
+	thirdStar.style.color="red";
+	fourthStar.style.color="red";
+	
+	score = 5;
+	vote.value = score;
+	
+	document.getElementById("review-button").removeAttribute("disabled");
+	document.getElementById("rate-recipe-p").style.color="gainsboro";
+}
+</script>
+
+</body>
+</html>

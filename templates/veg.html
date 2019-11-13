@@ -1,0 +1,79 @@
+{% extends 'base_for_form.html' %}
+{% block content %}
+<div class="row">
+		
+			<p id="found-text" class="col s12 center"></p>
+			
+			{% for recipe in recipes %}
+			{% if recipe.vegeterian %}
+			<div class="cookbook-card-section card col s12 m4 left">
+					<div class="card-image waves-effect waves-block waves-light">
+						<img class="activator" src="../static/images/{{ recipe.image }}">
+					</div>
+					<div class="card-content">
+						<span class="card-title activator found-title" for="recipe_title">{{recipe.recipe_title}}
+							<i id="more-vert" class="material-icons right">more_vert</i>
+						</span>
+						<a id="read-more-a" href="{{ url_for('edit_recipe', recipe_id = recipe._id) }}">Read more...</a>
+					</div>
+					
+				<!-- card-reveal -->	
+				
+					<div class="card-reveal">
+						<div class="row">
+							<span id="card-title-reveal" class="card-title col s12">{{recipe.recipe_title}}	<i id="close-card" class="material-icons right">close</i>
+							</span>
+						</div>
+						<div class="row">
+						{% if recipe.score %}
+							<p class="col s6"> 
+							{% for x in range(recipe.score // recipe.votes)%}
+								<i id="card-star" class="material-icons">star</i>
+							{% endfor %}
+							</p>
+						{% else %}
+								<p class="col s6"> 
+								Waiting for your vote...
+								</p>
+						{% endif %}
+						<!---->	
+							<div class="col s6">
+									<div class="input-field col s3">
+										{% if recipe.vegeterian %}
+										<i id="card-veg" class="fas fa-carrot tooltipped" id="vege-icon" name="vegeterian" data-position="bottom" data-tooltip="Vegeterian"></i>
+										{% endif %}
+									</div>
+									<div class="input-field col s3">
+										{% if recipe.hot %}
+										<i id="card-hot" class="fab fa-hotjar tooltipped" id="hot-icon" name="hot" data-position="bottom" data-tooltip="Hot"></i>
+										{% endif %}
+									</div>
+							</div>
+						</div>
+						<!---->
+						<div class="row update-desc">
+							<div class="col s12">
+								<p id="cookbook-short" name="short">{{recipe.short}}</p>
+							</div>
+						</div>
+					</div>	
+				</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+</div>	
+<script>
+	var found = document.getElementsByClassName("found-title");
+	var foundAmount = found.length;
+	if(foundAmount == 0){
+		document.getElementById("found-text").innerHTML = "Sorry, no matches";
+	}else{
+		document.getElementById("found-text").innerHTML = "Found " + 
+		foundAmount + " recipes";
+		if(foundAmount == 1){
+			document.getElementById("found-text").innerHTML = "Found 1 recipe";
+		}	
+	}
+</script>
+</script>
+{% endblock %} 

@@ -1,0 +1,189 @@
+{% extends 'base_for_form.html' %}
+{% block content %}
+
+<form id="update-recipe" action="{{ url_for('update_recipe', recipe_id = recipe._id) }}", method="POST">
+	<!-- TOP content-->
+	<div class="row">
+		<div class="col s12">
+			<!-- Title/Author -->
+				<div class="row">
+					<!-- Title -->
+					<div class="input-field col s12 l8">
+						<i class="material-icons prefix">title</i>
+						<input id="recipe_title" name="recipe_title" type="text" class="validate" value="{{recipe.recipe_title}}" maxlength="30" required>
+						<label for="recipe_title">Recipe Title</label>
+					</div>
+					<!-- Author -->
+					<div class="input-field col s12 l4">
+						<i class="material-icons prefix">portrait</i>
+						<input name="author" type="text" class="validate" value="{{recipe.author}}" required>
+						<label for="author">Author</label>
+					</div>
+				</div>
+				<!-- Meal/Image -->
+				<div id="meal-type-img-section" class="row">				
+					<!-- Meal -->
+					<ul id="meal-type-section" class="collapsible expandable col s4 left">
+					<i id="meal-type-icon" class="material-icons col s1 prefix">local_dining</i>
+						<li>
+							<div id="meal-type-header" class="collapsible-header base-table-header">
+								<span id="update-meal-type-span">{{recipe.meal_type}}</span>
+								<i class="material-icons arrow-icon col s1 hide-on-small-only">keyboard_arrow_down</i>
+							</div>
+							<div class="collapsible-body">
+								<div class="base-cuisine-td">
+									<a id="Appetizers" href="#" class="col s12 meal-type-link center">Appetizers</a>
+									<a id="Breakfast" href="#" class="col s12 meal-type-link center">Breakfast</a>
+									<a id="Lunch" href="#" class="col s12 meal-type-link center">Lunch</a>
+									<a id="Dinner" href="#" class="col s12 meal-type-link center">Dinner</a>
+									<a id="Dessert" href="#" class="col s12 meal-type-link center">Dessert</a>		
+									<input id="meal-type" name="meal_type" type="text" class="validate" value="{{recipe.meal_type}}" hidden required>
+								</div>	
+							</div>	
+						</li>
+					</ul>
+					<!-- Image -->
+					<div class="col s8 l7" id="add-top-img">
+						<div class="file-field input-field">
+							<div class="btn right" id="upload-button">
+								<span>Image</span>
+									<i class="material-icons icon-button right">file_upload</i>
+									<input type="file">
+							</div>
+							<div class="file-path-wrapper">
+								<input name="image" class="file-path validate" type="text" placeholder="Upload image" value="{{ recipe.image }}" required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Cuisine/Veg/Hot -->
+				<div class="row" id="add-cuisine-veg-hot">
+					<!-- Cuisine -->
+					<div class="input-field col s6">
+						<i class="material-icons prefix">room_service</i>
+						<input id="cuisine" name="cuisine" type="text" class="validate" value="{{recipe.cuisine}}" maxlength="20" required>
+						<label for="cuisine">Cuisine</label>
+					</div>
+					<!-- Veg -->
+					<div class="input-field col s3">
+					{% if recipe.vegeterian %}
+						<label>
+							<input id="vegeterian" name="vegeterian" type="checkbox" checked>
+							<span class="form-checkbox">Vegeterian</span>
+						</label>
+					{% else %}
+						<label>
+							<input id="vegeterian" name="vegeterian" type="checkbox">
+							<span class="form-checkbox">Vegeterian</span>
+						</label>
+					{% endif %}
+					</div>
+					<!-- Hot -->
+					<div class="input-field col s3 align-right">
+					{% if recipe.hot %}
+						<label>
+							<input id="hot" name="hot" type="checkbox" checked>
+							<span class="form-checkbox">Hot</span>
+						</label>
+					{% else %}
+						<label>
+							<input id="hot" name="hot" type="checkbox">
+							<span class="form-checkbox">Hot</span>
+						</label>
+					{% endif %}
+					</div>
+				</div>
+				<!-- Serves/Time -->
+				<div class="row" id="add-serve-prep-cook">
+					<!-- Serves -->
+					<div class="input-field col s4">
+						<i class="material-icons prefix">local_pizza</i>
+						<input id="servings" name="servings" type="text" class="validate" value="{{recipe.servings}}" required>
+						<label for="servings">Serves</label>
+					</div>
+					<!-- Prep -->
+					<div class="input-field col s4">
+						<i class="material-icons prefix">schedule</i>
+						<input id="prep_time" name="prep_time" type="text" class="validate" value="{{recipe.prep_time}}" required>
+						<label for="prep_time">Prep</label>
+					</div>
+					<!-- Cook -->
+					<div class="input-field col s4">
+						<i class="material-icons prefix">timer</i>
+						<input id="cook_time" name="cook_time" type="text" class="validate" value="{{recipe.cook_time}}" required>
+						<label for="cook_time">Cook</label>
+					</div>
+				</div><!-- Serves/Time -->
+		</div>
+	</div><!-- TOP content-->
+
+	<!-- MIDDLE Contentt -->	
+	<div class="row" id="update-ingr-tools">
+		<!-- Ingredients -->
+		<div class="row input-field col s12 l6">
+			<i class="material-icons prefix">shopping_basket</i>
+			<textarea id="ingredients" name="ingredients" class="materialize-textarea" required>{{recipe.ingredients}}</textarea>
+			<label for="ingredients">Ingredients</label>
+		</div>
+		<!-- Tools -->
+		<div id="edit-tools-section" class="col s12 l6">
+			<h5 id="edit-tools-h5" class="edit-h col s10 center edit-middle-sections">Our Kitchen Tools<span class="new badge red darken-1 left"></span></h5>
+			<div id="edit-top-img" class="col s12">
+				<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}">	
+			</div>
+			<div class="col s12">
+				<p id="tools-p">Made in Germany exclusively for Plenty of Dish by Rolf Lampe, a maker of handcrafted blades, this chef's knife makes prep work fast and simple. 
+				The sharp, stainless steel blade allows for refined cuts and beautiful results in your pot or on your plate. 
+				Our knife is ideal for men and women and others!</p>
+			</div>
+		</div>
+	</div><!-- MIDDLE Contentt -->
+
+	<!-- Short Description -->
+	<div class="row update-desc">
+		<div class="row input-field col s12">
+			<i class="material-icons prefix">chat</i>
+			<textarea id="update-short" name="short" class="materialize-textarea" required>{{recipe.short}}</textarea>
+			<label for="short">Short Description</label>
+		</div>
+	</div>
+	<!-- Method -->	
+	<div class="row update-inst">
+		<div class="row input-field col s12">
+			<i class="material-icons prefix">mode_edit</i>
+			<textarea id="description" name="description" class="materialize-textarea" required>{{recipe.description}}</textarea>
+			<label for="description">Method</label>
+		</div>
+	</div>
+	<!-- Buttons -->	
+	<div class="row" id="update-delete-buttons">
+		<!-- Submit -->
+		<div id="edit-submit-btn" class="col s7 m6">
+			<button id="update-add-button" class="btn waves-effect waves-light left" type="submit" name="action">SUBMIT
+			<i class="material-icons update-icon right hide-on-small-only">playlist_add</i>
+			</button>
+		</div>
+		<!-- Delete -->
+		<div class="col s4 m6">
+			<a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" id="delete-button" class="waves-effect waves-light btn btn_small right">DELETE<i class="material-icons icon-button right">delete</i></a>
+		</div>
+	</div>
+</form>
+</div><!-- base_for_form.html ENDS HERE!-->
+
+<script>
+var mealType = document.getElementsByClassName("meal-type-link");
+
+for(var i = 0 ; i < mealType.length; i++){
+	mealType[i].addEventListener('click', mealClick, false ); 
+}
+	
+function mealClick(){
+	var inputValue = this.getAttribute('id');
+	document.getElementById("meal-type").setAttribute("value", inputValue);
+	document.getElementById("update-meal-type-span").textContent = inputValue;
+	document.getElementById("meal-type-span").style.color="black";
+}
+</script>
+
+{%endblock%}
