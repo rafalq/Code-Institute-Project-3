@@ -5,7 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
-app.secret_key = 'some_secret'
+app.secret_key = os.getenv('secret', 'secret123')
 
 app.config["MONGO_DBNAME"] = 'online_cookbook'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
@@ -143,5 +143,5 @@ def delete_recipe(recipe_id):
     return redirect(url_for('cookbook'))   
     
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),port=os.environ.get('PORT'),debug=True)
+    app.run(host=os.environ.get('IP','0.0.0.0'),port=os.environ.get('PORT','5000'),debug=False)
         
