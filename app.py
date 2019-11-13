@@ -34,7 +34,7 @@ def rank_edit():
 
 @app.route('/')
 def cookbook():
-    recipes = mongo.db.recipes.find().sort('recipe_title')
+    recipes = mongo.db.recipes.sort('recipe_title')
     cuisines_all = mongo.db.recipes.find({},{'cuisine':1, '_id':0}).count()
     count_cuisines = mongo.db.recipes.aggregate([ {'$group': { '_id': {"cuisine": "$cuisine"}, 'count': {'$sum': 1} } } ])
     
