@@ -20,17 +20,17 @@
 <div class="container">
 	<!-- Home Header -->
 	<header class="row">
-		<a href="{{ url_for('cookbook')}}" id="logo" class="col s12 center">Plenty of Dish</a>
+		<a href="{{ url_for('home')}}" id="logo" class="col s12 center">Plenty of Dish</a>
 	</header>
 	<!-- Share and Search section-->
 	<nav id="navbar" class="row blue-grey lighten-3">
-		<form id="nav-form" class="row col m6 s12" action="{{ url_for('search')}}" method="POST">
+		<form id="nav-form" class="row col m6 s12" action="{{ url_for('recipes')}}" method="POST">
 			<i id="home-search-icon" class="col s2 material-icons center">search</i>
 			<input id="nav-input" name="search_name" type="search" class="input-field col s7 m6 l8 center white" placeholder="Search">
 			<button id="nav-button" class="btn waves-effect waves-light col s1" type="submit" name="action">GO</button>
 		</form>
 		<div id="share-recipe" class="row">
-			<a href="{{ url_for('add_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
+			<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
 		</div>
 	</nav>
 {% block content %}

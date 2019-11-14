@@ -19,17 +19,17 @@
 <body>
 	<!-- Home Header -->
 	<header class="row">
-		<a href="{{ url_for('cookbook')}}" id="logo" class="col s12 center">Plenty of Dish</a>
+		<a href="{{ url_for('home')}}" id="logo" class="col s12 center">Plenty of Dish</a>
 	</header>
 	<!-- Share and Search section-->
 	<nav id="navbar" class="row blue-grey lighten-3">
-		<form id="nav-form" class="row col m6 s12" action="{{ url_for('search')}}" method="POST">
+		<form id="nav-form" class="row col m6 s12" action="{{ url_for('recipes')}}" method="POST">
 			<i id="home-search-icon" class="col s2 material-icons center">search</i>
 			<input id="nav-input" name="search_name" type="search" class="input-field col s7 m6 l8 center white" placeholder="Search">
 			<button id="nav-button" class="btn waves-effect waves-light col s1" type="submit" name="action">GO</button>
 		</form>
 		<div id="share-recipe" class="row col m6 s12">
-			<a href="{{ url_for('add_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
+			<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
 			<span id="logo-span" class="badge col m4 hide-on-med-and-down" data-badge-caption="recipes"></span>
 		</div>
 	</nav>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="collapsible-body">
 				{% for x in count_cuisines %}
-				<form class="base-form row" action="{{ url_for('search')}}" method="POST">
+				<form class="base-form row" action="{{ url_for('recipes')}}" method="POST">
 					<div class="base-cuisine-td">
 						<button id="base-form-button-cuisine" class="row col s12" type="submit" name="action">
 							<input id="cuisine-found" class="col s10 m8 l10" name="search_name" type="text" value="{{x._id.cuisine}}" readonly>
@@ -69,7 +69,7 @@
 				<!-- Veg -->
 				<form class="base-form row">
 					<div class="base-cuisine-td veg-base-cuisine-td">
-						<a href="{{ url_for('veg') }}" id="base-form-button-cuisine" class="row col s12 vege-a center">Vegeterian	
+						<a href="{{ url_for('vegeterian_recipes') }}" id="base-form-button-cuisine" class="row col s12 vege-a center">Vegeterian	
 							<span id="base-vege-badge" class="base-badge-cuisine badge col s2 right">{{veg_counter}}
 							</span>
 						</a>
@@ -85,7 +85,7 @@
 			</div>
 			<div class="collapsible-body">
 				{% for y in count_meals %}
-				<form class="base-form row" action="{{ url_for('search')}}" method="POST">
+				<form class="base-form row" action="{{ url_for('recipes')}}" method="POST">
 					<div class="base-cuisine-td">
 						<button id="base-form-button-cuisine" class="row col s12" type="submit" name="action">
 							<input id="cuisine-found" class="col s10 m8 l10" name="search_name" type="text" value="{{y._id.meal_type}}" readonly>
@@ -103,7 +103,7 @@
 				<div id="body-base-review" class="collapsible-body">
 					<!-- 5 stars -->
 					<div class="base-review-td">
-						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+						<form class="base-form row" action="{{ url_for('reviewed_recipes') }}" method="POST">
 							<input id="search_rate" type="hidden" name="search_rate" value="5">
 							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Delicious" type="submit" name="action">
 								<i class="base-review-star material-icons">star</i>
@@ -117,7 +117,7 @@
 					</div>	
 					<!-- 4 stars -->
 					<div class="base-review-td">
-						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+						<form class="base-form row" action="{{ url_for('reviewed_recipes') }}" method="POST">
 							<input id="search_rate" type="hidden" name="search_rate" value="4">
 							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Very good" type="submit" name="action">
 								<i class="base-review-star material-icons">star</i>
@@ -130,7 +130,7 @@
 					</div>
 					<!-- 3 stars -->
 					<div class="base-review-td">
-						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+						<form class="base-form row" action="{{ url_for('reviewed_recipes') }}" method="POST">
 							<input id="search_rate" type="hidden" name="search_rate" value="3">
 							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Good" type="submit" name="action">
 								<i class="base-review-star material-icons">star</i>
@@ -142,7 +142,7 @@
 					</div>
 					<!-- 2 stars -->
 					<div class="base-review-td">
-						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+						<form class="base-form row" action="{{ url_for('reviewed_recipes') }}" method="POST">
 							<input id="search_rate" type="hidden" name="search_rate" value="2">
 							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Fine" type="submit" name="action">
 								<i class="base-review-star material-icons">star</i>
@@ -153,7 +153,7 @@
 					</div>		
 				 <!-- 1 star -->
 					<div class="base-review-td">
-						<form class="base-form row" action="{{ url_for('rank_edit') }}" method="POST">
+						<form class="base-form row" action="{{ url_for('reviewed_recipes') }}" method="POST">
 							<input id="search_rate" type="hidden" name="search_rate" value="1">
 							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="Bad" type="submit" name="action">
 								<i class="base-review-star material-icons">star</i>
@@ -163,7 +163,7 @@
 					</div>	
 					<!-- no stars -->
 					<div class="base-review-td">
-						<form class="base-form row" action="{{ url_for('no_review')}}" method="POST" >
+						<form class="base-form row" action="{{ url_for('recipes_without_review')}}" method="POST" >
 							<input id="search_rate" type="hidden" name="search_rate" value="4">
 							<button id="base-form-button-review" class="col s6 tooltipped left" data-position="right" data-tooltip="No reviews" type="submit" name="action">
 								<i class="base-review-star material-icons">star_border</i>

@@ -1,7 +1,7 @@
 {% extends 'base_for_form.html' %}
 {% block content %}
 
-<form id="update-recipe" action="{{ url_for('update_recipe', recipe_id = recipe._id) }}", method="POST">
+<form id="update-recipe" action="{{ url_for('update', recipe_id = recipe._id) }}", method="POST">
 	<!-- TOP content-->
 	<div class="row">
 		<div class="col s12">
