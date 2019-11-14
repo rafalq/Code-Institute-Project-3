@@ -45,12 +45,12 @@
 					<!-- Image -->
 					<div class="col s8 l7" id="add-top-img">
 						<div class="file-field input-field">
-							<div class="btn right" id="upload-button">
+							<div class="col s4 btn right" id="upload-button">
 								<span>Image</span>
 									<i class="material-icons icon-button right">file_upload</i>
 									<input type="file">
 							</div>
-							<div class="file-path-wrapper">
+							<div class="col s8 file-path-wrapper">
 								<input name="image" class="file-path validate" type="text" placeholder="Upload image" value="{{ recipe.image }}" required>
 							</div>
 						</div>
@@ -127,7 +127,7 @@
 		</div>
 		<!-- Tools -->
 		<div id="edit-tools-section" class="col s12 l6">
-			<h5 id="edit-tools-h5" class="edit-h col s10 center edit-middle-sections">Our Kitchen Tools<span class="new badge red darken-1 left"></span></h5>
+			<h4 id="edit-tools-h4" class="edit-h col s12 center edit-middle-sections">Our Kitchen Tools</h4>
 			<div id="edit-top-img" class="col s12">
 				<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}">	
 			</div>

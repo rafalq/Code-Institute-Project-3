@@ -217,7 +217,7 @@ span.base-badge-review{
 /*no stars*/
 	
 /*--------------------------------------------------------------*/
-					/* ----- cookbook.html ----- */
+					/* ----- home.html ----- */
 /*Flash Wrapper*/
 #flash-message-section{
 	margin: auto;
@@ -271,7 +271,7 @@ span.card-title.found-title{
 /*Short Desc*/
 
 /*--------------------------------------------------------------*/
-					/* ----- add_recipe.html ----- */
+					/* ----- share_your_recipe.html ----- */
 /*FORM*/
 input:focus {
   border-bottom: 1px solid #0d47a1 !important;
@@ -342,7 +342,7 @@ a.meal-type-link:hover{
 }
 /*Image*/
 #add-top-img{
-	margin-top: 20px; 
+	margin-top: 1px; 
 }
 #upload-button{
 	background-color: #00c853;
@@ -540,8 +540,9 @@ h5.edit-h.col{
 #tools-p{
 	font-family: 'Raleway', sans-serif;
 }
-#edit-tools-h5{
+#edit-tools-h4{
 	padding-bottom: 20px;
+	font-family: 'Bebas Neue', cursive;
 }	
 /*Method*/
 #edit-method-wrapper{
@@ -557,7 +558,7 @@ h5.edit-h.col{
 }
 
 /*--------------------------------------------------------------*/
-					/* ----- for_update.html ----- */
+					/* ----- update_recipe.html ----- */
 #update-recipe{
 	margin-top: 40px;
 }
