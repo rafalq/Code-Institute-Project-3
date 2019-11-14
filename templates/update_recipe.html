@@ -26,7 +26,7 @@
 					<ul id="meal-type-section" class="collapsible expandable col s4 left">
 					<i id="meal-type-icon" class="material-icons col s1 prefix">local_dining</i>
 						<li>
-							<div id="meal-type-header" class="collapsible-header base-table-header">
+							<div id="meal-type-header" class="collapsible-header base-table-header tooltipped" data-position="bottom" data-tooltip="Field required">
 								<span id="update-meal-type-span">{{recipe.meal_type}}</span>
 								<i class="material-icons arrow-icon col s1 hide-on-small-only">keyboard_arrow_down</i>
 							</div>
@@ -45,12 +45,12 @@
 					<!-- Image -->
 					<div class="col s8 l7" id="add-top-img">
 						<div class="file-field input-field">
-							<div class="col s4 btn right" id="upload-button">
+							<div class="col s5 l3 btn right" id="upload-button">
 								<span>Image</span>
 									<i class="material-icons icon-button right">file_upload</i>
 									<input type="file">
 							</div>
-							<div class="col s8 file-path-wrapper">
+							<div class="col s7 l9 file-path-wrapper">
 								<input name="image" class="file-path validate" type="text" placeholder="Upload image" value="{{ recipe.image }}" required>
 							</div>
 						</div>
@@ -127,7 +127,7 @@
 		</div>
 		<!-- Tools -->
 		<div id="edit-tools-section" class="col s12 l6">
-			<h4 id="edit-tools-h4" class="edit-h col s12 center edit-middle-sections">Our Kitchen Tools</h4>
+			<h4 id="edit-tools-h4" class="edit-h col s12 center">Our Kitchen Tools</h4>
 			<div id="edit-top-img" class="col s12">
 				<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}">	
 			</div>

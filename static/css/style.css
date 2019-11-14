@@ -226,6 +226,7 @@ span.base-badge-review{
 div.card{
 	margin-top: 0;
 }
+
 /*Card-Outside*/
 div.cookbook-card-section{
 	padding: 10px !important;
@@ -243,7 +244,7 @@ span.card-title.found-title{
 	color: #b71c1c;
 }
 #read-more-a{
-	margin: auto; 
+	margin: auto;
 	color: #b71c1c;
 }
 /*Card-Inside*/
@@ -261,12 +262,14 @@ span.card-title.found-title{
 }
 /*Veg*/
 #card-veg{
-	font-size: 18px;
+	color: green;
+	font-size: 20px;
 }
 /*Hot*/
-#car-hot{
+#card-hot{
 	margin-left: 5px; 
-	font-size: 18px;
+	color: red;
+	font-size: 20px;
 }
 /*Short Desc*/
 
@@ -453,14 +456,12 @@ i.edit-icon{
 }
 /*Meal*/
 /*Veg*/
-#vege-icon{
-	color: green;
-	font-size: 20px;
-}	
+#veg-icon{
+	color: #008000;
+}
 /*Hot*/
 #hot-icon{
-	color: red;
-	font-size: 20px;
+	color: #ff0000; 
 }
 /*Cuisine/Serves*/
 #edit-cuisine-serves-section{
@@ -541,7 +542,6 @@ h5.edit-h.col{
 	font-family: 'Raleway', sans-serif;
 }
 #edit-tools-h4{
-	padding-bottom: 20px;
 	font-family: 'Bebas Neue', cursive;
 }	
 /*Method*/
