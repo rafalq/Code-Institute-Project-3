@@ -25,13 +25,11 @@
 	<!-- Share and Search section-->
 	<nav id="navbar" class="row blue-grey lighten-3">
 		<form id="nav-form" class="row col m6 s12" action="{{ url_for('recipes')}}" method="POST">
-			<i id="home-search-icon" class="col s2 material-icons center">search</i>
-			<input id="nav-input" name="search_name" type="search" class="input-field col s7 m6 l8 center white" placeholder="Search">
-			<button id="nav-button" class="btn waves-effect waves-light col s1" type="submit" name="action">GO</button>
+			<i id="home-search-icon" class="col s2 material-icons center hide-on-small-only">search</i>
+			<input id="nav-input" name="search_name" type="search" class="input-field col s10 m8 center white" placeholder="Search">
+			<button id="nav-button" class="btn waves-effect waves-light col s1 right" type="submit" name="action">GO</button>
 		</form>
-		<div id="share-recipe" class="row">
-			<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
-		</div>
+		<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col m6 s12 center">Share Your Recipe</a>
 	</nav>
 {% block content %}
 {% endblock %}

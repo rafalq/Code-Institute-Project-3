@@ -24,7 +24,7 @@
 	<nav id="navbar" class="row blue-grey lighten-3">
 		<form id="nav-form" class="row col m6 s12" action="{{ url_for('recipes')}}" method="POST">
 			<i id="home-search-icon" class="col s2 material-icons center hide-on-small-only">search</i>
-			<input id="nav-input" name="search_name" type="search" class="input-field col s9 m7 l8 center white" placeholder="Search">
+			<input id="nav-input" name="search_name" type="search" class="input-field col s10 m8 center white" placeholder="Search">
 			<button id="nav-button" class="btn waves-effect waves-light col s1 right" type="submit" name="action">GO</button>
 		</form>
 		<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col m6 s12 center">Share Your Recipe</a>
@@ -66,7 +66,7 @@
 						{% endfor %}
 						<span id="edit-votes-span">
 						{% if recipe.votes == 1 %}
-						 1 rating
+						 (1 rating)
 						{% else %}
 						({{recipe.votes}} ratings)</span>
 						{% endif %}
