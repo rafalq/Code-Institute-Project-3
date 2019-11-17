@@ -28,7 +28,10 @@
 			<input id="nav-input" name="search_name" type="search" class="base-field input-field col s10 m8 l9 center white" placeholder="Search">
 			<button id="nav-button" class="btn waves-effect waves-light col s1 right" type="submit" name="action">GO</button>
 		</form>
-		<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col m6 s12 center">Share Your Recipe</a>
+		<div id="share-recipe" class="row col m6 s12">
+			<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col l5 s12 center">Share Your Recipe</a>
+			<span id="logo-span" class="badge col m3 hide-on-med-and-down" data-badge-caption="recipes"></span>
+		</div>
 	</nav>
 	<!-- Flash -->
 	<div id="flash-div" class="row">
@@ -181,6 +184,10 @@ var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {
   accordion: false
 });
+
+var found = document.getElementsByClassName("found-title");
+var foundAmount = found.length;
+document.getElementById("logo-span").textContent = foundAmount;
 </script>
 </body>
 </html>

@@ -5,10 +5,10 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["SECRET_KEY"] = os.getenv('SECRET_KEY')
 
-app.config["MONGO_DBNAME"] = "online_cookbook"
-app.config["MONGO_URI"] = os.getenv("MONGO_URI", 'mongodb://localhost')
+app.config["MONGO_DBNAME"] = 'online_cookbook'
+app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 
