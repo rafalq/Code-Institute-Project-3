@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
-	<link href="https://fonts.googleapis.com/css?family=Raleway|Cabin|Roboto|Cormorant+Garamond|Bebas+Neue&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/da5655adfb.js" crossorigin="anonymous"></script>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,14 +10,16 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	
-	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">	
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+
+	<title>{{recipe.recipe_title}}</title>
 </head>
 
 <body>
 <div class="container">
 	<!-- Home Header -->
 	<header class="row">
-		<a href="{{ url_for('home')}}" id="logo" class="col s12 center">Plenty of Dish</a>
+		<a href="{{ url_for('home')}}" id="logo" class="col s12 center tooltipped" data-position="bottom" data-tooltip="Home Page">Plenty of Dish</a>
 	</header>		
 	<!-- Share and Search section-->
 	<nav id="navbar" class="row blue-grey lighten-3">
@@ -27,7 +28,7 @@
 			<input id="nav-input" name="search_name" type="search" class="input-field col s10 m8 center white" placeholder="Search">
 			<button id="nav-button" class="btn waves-effect waves-light col s1 right" type="submit" name="action">GO</button>
 		</form>
-		<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col m6 s12 center">Share Your Recipe</a>
+		<a href="{{ url_for('share_your_recipe')}}" id="nav-your-recipe-link" class="col m6 s12 center tooltipped" data-position="bottom" data-tooltip="Add Recipe">Share Your Recipe</a>
 	</nav>
 		
 	<!-- Main Wrapper -->
@@ -36,32 +37,32 @@
 		<!-- TOP Content -->
 		<div class="row">			
 			<!-- Title/Author -->
-			<div id="edit-title" class="row hide-on-med-and-up">
+			<div class="edit-title row hide-on-med-and-up">
 				<!-- Title -->
 				<div class="input-field col s12">
-					<h4 id="edit-recipe-title" for="recipe_title" class="center">
-					<a id="edit-recipe-title-link" href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="tooltipped" data-position="left" data-tooltip="Update/Delete Form">{{recipe.recipe_title}}</a>
+					<h4 class="edit-recipe-title center">
+					<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-recipe-title-link tooltipped" data-position="bottom" data-tooltip="Update/Delete Recipe">{{recipe.recipe_title}}</a>
 					</h4>
 				</div>
 				<!-- Author -->
-				<div class="input-field col s12 center" id="edit-author-div">
+				<div class="edit-author-div input-field col s12 center">
 					<p>
-					<small>by</small><a id="edit-author-paragraph" href="{{ url_for('update_recipe', recipe_id = recipe._id) }}">&nbsp;{{recipe.author}}</a>
+					<small>by</small><a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-author-paragraph tooltipped" data-position="bottom" data-tooltip="Update/Delete Recipe">&nbsp;{{recipe.author}}</a>
 					</p>
 				</div>
 			</div>					
 			<!-- TOP LEFT Content Image/Rank/Short -->	
-			<div id="edit-top-img" class="col s12 l6"> 
+			<div class="edit-top-img col s12 l6"> 
 				<div class="row">
 					<!-- Image -->
-					<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="top" data-tooltip="Update/Delete Form">
+					<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="top" data-tooltip="Update/Delete Recipe">
 					<img class="responsive-img col s12" src="../static/images/{{ recipe.image }}" alt="Recipe Image">
 					</a>
 					<!-- Rank -->
 					<div class="col s12 center">
 					{% if recipe.score %}
 						<p id="edit-rating-p"> 
-						{% for x in range(recipe.score // recipe.votes)%}
+						{% for x in range(recipe.score // recipe.votes) %}
 						<i id="edit-card-star" class="material-icons">star</i>
 						{% endfor %}
 						<span id="edit-votes-span">
@@ -85,17 +86,17 @@
 			<!-- TOP RIGHT Content -->
 			<div class="col s12 m12 l6">
 				<!-- Title/Author -->
-				<div id="edit-title" class="row show-on-medium-and-up hide-on-med-and-down">
+				<div class="edit-title row show-on-medium-and-up hide-on-med-and-down">
 					<!-- Title on MEDIUM -->
 					<div class="input-field col s12">
-						<h4 id="edit-recipe-title" class="center">
-						<a id="edit-recipe-title-link" href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="left" data-tooltip="Update/Delete Form">{{recipe.recipe_title}}</a>
+						<h4 class="edit-recipe-title center">
+						<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-recipe-title-link tooltipped" data-position="left" data-tooltip="Update/Delete Recipe">{{recipe.recipe_title}}</a>
 						</h4>
 					</div>
 					<!-- Author -->		
-					<div class="input-field col s12 center" id="edit-author-div">
+					<div class="edit-author-div input-field col s12 center">
 						<p>
-						<small>by</small><a id="edit-author-paragraph" href="{{ url_for('update_recipe', recipe_id = recipe._id) }}">&nbsp;{{recipe.author}}</a>
+						<small>by</small><a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}"  class="edit-author-paragraph tooltipped" data-position="bottom" data-tooltip="Update/Delete Recipe">&nbsp;{{recipe.author}}</a>
 						</p>
 					</div>
 				</div>		
@@ -158,7 +159,7 @@
 			</div><!-- TOP RIGHT Content -->
 			
 			<!-- Rate Section -->					
-			<form id="edit-review" action="{{ url_for('review_recipe', recipe_id = recipe._id) }}", method="POST">
+			<form id="edit-review" action="{{ url_for('review_recipe', recipe_id = recipe._id) }}" method="POST">
 				<div class="col s12 center" id="edit-stars">
 					<!-- Rate Header -->
 					<p id="rate-recipe-p" class="col s12"><i class="fas fa-gavel"></i>Rate the recipe</p>
@@ -183,7 +184,7 @@
 		<div class="row">
 			<!-- Ingredients -->
 			<div class="col s12 l6 ">
-				<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="bottom" data-tooltip="Update/Delete Form">
+				<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-title-link tooltipped" data-position="bottom" data-tooltip="Update/Delete Recipe">
 				<h5 id="edit-ingr" class="edit-h col s12 center edit-middle-sections">Ingredients</h5></a>
 				<div class="input-field col s12 edit-middle-sections">
 					<i class="edit-icon material-icons prefix">shopping_basket</i>
@@ -192,8 +193,8 @@
 			</div>
 			<!-- Tools -->		
 			<div id="edit-tools-section" class="col s12 l6">
-				<h4 id="edit-tools-h4" class="edit-h col s12 center">Our Kitchen Tools</h5>
-				<div id="edit-top-img" class="col s12">
+				<h5 class="edit-h col s12 center">Our Kitchen Tools</h5>
+				<div class="edit-top-img col s12">
 					<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}" alt="Recipe Image">	
 				</div>
 				<div class="col s12">
@@ -209,7 +210,7 @@
 		<!-- Method -->	
 		<div id="edit-method-wrapper" class="row">
 			<a href="{{ url_for('update_recipe', recipe_id = recipe._id) }}" class="edit-title-link">
-			<h5 id="edit-method" class="edit-h col s12 center edit-middle-sections  tooltipped" data-position="bottom" data-tooltip="Update/Delete Form">Method</h5></a>
+			<h5 id="edit-method" class="edit-h col s12 center edit-middle-sections  tooltipped" data-position="bottom" data-tooltip="Update/Delete Recipe">Method</h5></a>
 			<div class="input-field col s12 edit-middle-sections">
 				<i class="edit-icon material-icons prefix">description</i>
 				<textarea id="edit-description" name="description" disabled>{{recipe.description}}</textarea>

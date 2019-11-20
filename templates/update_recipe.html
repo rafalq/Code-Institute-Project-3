@@ -1,7 +1,7 @@
 {% extends 'base_for_form.html' %}
 {% block content %}
 
-<form id="update-recipe" action="{{ url_for('update', recipe_id = recipe._id) }}", method="POST">
+<form id="update-recipe" action="{{ url_for('update', recipe_id = recipe._id) }}" method="POST">
 	<!-- TOP content-->
 	<div class="row">
 		<div class="col s12">
@@ -15,8 +15,8 @@
 					</div>
 					<!-- Author -->
 					<div class="input-field col s12 l4">
-						<i class="material-icons prefix">portrait</i>
-						<input name="author" type="text" class="validate" value="{{recipe.author}}" required>
+						<i class="material-icons prefix">account_circle</i>
+						<input id="author" name="author" type="text" class="validate" value="{{recipe.author}}" required>
 						<label for="author">Author</label>
 					</div>
 				</div>
@@ -24,8 +24,8 @@
 				<div id="meal-type-img-section" class="row">				
 					<!-- Meal -->
 					<ul id="meal-type-section" class="collapsible expandable col s4 left">
-					<i id="meal-type-icon" class="material-icons col s1 prefix">local_dining</i>
 						<li>
+						<i id="meal-type-icon" class="material-icons col s1 prefix">local_dining</i>
 							<div id="meal-type-header" class="collapsible-header base-table-header tooltipped" data-position="bottom" data-tooltip="Field required">
 								<span id="update-meal-type-span">{{recipe.meal_type}}</span>
 								<i class="material-icons arrow-icon col s1 hide-on-small-only">keyboard_arrow_down</i>
@@ -68,12 +68,12 @@
 					<div class="input-field col s3">
 					{% if recipe.vegeterian %}
 						<label>
-							<input id="vegeterian" name="vegeterian" type="checkbox" checked>
+							<input name="vegeterian" type="checkbox" checked>
 							<span class="form-checkbox">Vegeterian</span>
 						</label>
 					{% else %}
 						<label>
-							<input id="vegeterian" name="vegeterian" type="checkbox">
+							<input name="vegeterian" type="checkbox">
 							<span class="form-checkbox">Vegeterian</span>
 						</label>
 					{% endif %}
@@ -82,12 +82,12 @@
 					<div class="input-field col s3 align-right">
 					{% if recipe.hot %}
 						<label>
-							<input id="hot" name="hot" type="checkbox" checked>
+							<input name="hot" type="checkbox" checked>
 							<span class="form-checkbox">Hot</span>
 						</label>
 					{% else %}
 						<label>
-							<input id="hot" name="hot" type="checkbox">
+							<input name="hot" type="checkbox">
 							<span class="form-checkbox">Hot</span>
 						</label>
 					{% endif %}
@@ -129,7 +129,7 @@
 		<div id="edit-tools-section" class="col s12 l6">
 			<h4 id="edit-tools-h4" class="edit-h col s12 center">Our Kitchen Tools</h4>
 			<div id="edit-top-img" class="col s12">
-				<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}">	
+				<img class="responsive-img" src="{{url_for('static', filename='images/knife.jpg')}}" alt="Ninja Knife Image">	
 			</div>
 			<div class="col s12">
 				<p id="tools-p">Made in Germany exclusively for Plenty of Dish by Rolf Lampe, a maker of handcrafted blades, this chef's knife makes prep work fast and simple. 
@@ -144,13 +144,13 @@
 		<div class="row input-field col s12">
 			<i class="material-icons prefix">chat</i>
 			<textarea id="update-short" name="short" class="materialize-textarea" required>{{recipe.short}}</textarea>
-			<label for="short">Short Description</label>
+			<label for="update-short">Short Description</label>
 		</div>
 	</div>
 	<!-- Method -->	
 	<div class="row update-inst">
 		<div class="row input-field col s12">
-			<i class="material-icons prefix">mode_edit</i>
+			<i class="material-icons prefix">description</i>
 			<textarea id="description" name="description" class="materialize-textarea" required>{{recipe.description}}</textarea>
 			<label for="description">Method</label>
 		</div>

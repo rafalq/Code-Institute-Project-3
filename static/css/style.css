@@ -1,13 +1,10 @@
-body{
-	font-family: 'Roboto', sans-serif;
-	
-}
+@import url('https://fonts.googleapis.com/css?family=Raleway|Cabin|Roboto|Cormorant+Garamond|Bebas+Neue&display=swap');
 
 /*--------------------------------------------------------------*/
 					/* ----- base.html ----- */
 /*Home Header*/
 header.row{
-	margin: auto;
+	margin: 10px auto;
 }
 #logo{
 	color: #000000;
@@ -15,7 +12,7 @@ header.row{
 	font-size: 40px;
 	margin: auto; 
 	padding: 0;
-	font-weight: bolder;
+	font-weight: 600;
 }
 #logo-span{
 	margin-top: 20px; 
@@ -62,7 +59,7 @@ header.row{
 
 @media only screen and (min-width: 993px) and (max-width: 1200px){
 	input.base-field{
-		width: 70% !important;
+		width: 73% !important;
 	}
 }
 #share-recipe{
@@ -74,7 +71,6 @@ header.row{
 	color: #0d47a1;
 	font-size: 20px;
 	font-weight: bold;
-	background-color: #eeeee;
 }
 #nav-your-recipe-link:hover{
 	font-size: 21px;
@@ -103,7 +99,7 @@ header.row{
 }
 /*Statistics*/
 #base-wrapper{
-	margin: 5px 20px;
+	margin: auto 20px;
 }
 form button input{
 	border: none !important; 
@@ -154,7 +150,7 @@ form.base-form{
 	padding-right: 5px; 
 	margin: auto;
 }
-#base-form-button-cuisine{
+.base-form-button-cuisine{
 	margin: auto;
 	border: none; 
 	background: transparent;
@@ -190,7 +186,7 @@ div.veg-base-cuisine-td{
 }
 /*Reviews*/
 #body-base-review{
-	margin-top: 10px;
+	margin: 10px auto;
 }		
 #base-review-icon{
 	color: #ff1744; 
@@ -205,14 +201,14 @@ div.base-review-td{
 	border: none; 
 	background: transparent;
 }					
-#base-form-button-review{
-	width: 90%;
+button.base-button-review{
+	width: 90% !important;
 	margin: auto;
 	margin-left: 20px !important;
 	border: none;
 	background: transparent;
 	cursor: pointer;
-	padding: 10px 0px;
+	padding: 5px 0!important;
 }
 i.base-review-star{
 	color:#0d47a1;
@@ -221,15 +217,9 @@ i.base-review-star{
 span.base-badge-review{
 	color: #757575;
 	padding-bottom: 10px;
-	padding-right: 20px;
+	margin-right: 10px;
 }	
-/*5 stars*/	
-/*4 stars*/	
-/*3 stars*/	
-/*2 stars*/	
-/*1 star*/	
-/*no stars*/
-	
+
 /*--------------------------------------------------------------*/
 					/* ----- home.html ----- */
 /*Flash Wrapper*/
@@ -285,7 +275,6 @@ span.card-title.found-title{
 	color: red;
 	font-size: 20px;
 }
-/*Short Desc*/
 
 /*--------------------------------------------------------------*/
 					/* ----- share_your_recipe.html ----- */
@@ -321,7 +310,6 @@ label.active {
 	margin-top: 40px;
 }
 /*TOP content*/
-/*Title*/
 /*Image/Meal*/
 #meal-type-img-section{
 	margin-top: 20px; 
@@ -364,8 +352,6 @@ a.meal-type-link:hover{
 #upload-button{
 	background-color: #00c853;
 }
-/*Cuisine/Veg/Hot*/
-/*Cuisine*/
 /*Veg*/
 span.form-checkbox{
 	padding-left: 25px !important;
@@ -374,12 +360,7 @@ span::before{
 	border-right: 2px solid #0d47a1!important;
     border-bottom: 2px solid #0d47a1 !important;
 }
-/*Hot*/
-/*Serves/Prep/Cook*/
-
 /*BOTTOM content*/
-/*Author/Submit button*/
-/*Author*/
 /*Submit button*/
 #add-button{
 	margin-top: 25px;
@@ -388,8 +369,6 @@ span::before{
 
 /*--------------------------------------------------------------*/		
 					/* ----- edit_recipe.html ----- */
-/*Home Header*/
-/*Share and Search section*/
 /*Main Wrapper*/
 #edit-background-color{
 	background-color: #eceff1;
@@ -411,35 +390,31 @@ i.edit-icon{
 	color: #82b1ff;
 }
 /*Title/Author*/
-#edit-title{
+.edit-title{
 	margin: auto;
 	margin-top: 5px;
 }
 /*Title*/
-#edit-recipe-title{
+.edit-recipe-title{
 	margin: auto;
 }
-#edit-recipe-title-link{
+.edit-recipe-title-link{
 	color: #0d47a1;
 }
 /*Author*/
-#edit-author-div{
+.edit-author-div{
 	margin: auto;
 }
-#author{
-	margin: auto;
-}
-#edit-author-paragraph{
+.edit-author-paragraph{
 	font-family: 'Cormorant Garamond', serif;
 	font-size: 18px;
 	color: #000000;
 }
 /*TOP LEFT Content Image/Rank/Short*/
-#edit-top-img{
-	padding-top: 10px;
+div.edit-top-img{
+	padding-top: 20px !important;
 	margin: auto;
 }
-/*Image*/
 /*Rank*/
 #edit-rating-p{
 	margin: auto; 
@@ -459,23 +434,21 @@ i.edit-icon{
 #edit-cookbook-short{
 	font-family: 'Raleway', sans-serif;
 }
-/*TOP RIGHT Content*/
-/*Title on MEDIUM*/
-/*Author*/
 /*Meal/Veg/Hot*/
 #meal-veg-hot-section{
 	margin: auto; 
 	padding-bottom: 30px; 
 	padding-left: 30px;
 }
-/*Meal*/
 /*Veg*/
 #veg-icon{
 	color: #008000;
+	font-size: 24px;
 }
 /*Hot*/
 #hot-icon{
-	color: #ff0000; 
+	color: #ff0000;
+	font-size: 24px;
 }
 /*Cuisine/Serves*/
 #edit-cuisine-serves-section{
@@ -523,7 +496,6 @@ i.edit-icon{
 i.star-rate{ 
 	cursor: pointer;
 }
-/*Vote Input*/
 /*Vote Button*/
 #review-button{
 	margin-left: 20px; 
@@ -549,9 +521,6 @@ h5.edit-h.col{
 /*Tools*/
 #tools-p{
 	font-family: 'Raleway', sans-serif;
-}
-#edit-tools-h4{
-	font-family: 'Bebas Neue', cursive;
 }	
 /*Method*/
 #edit-method-wrapper{
