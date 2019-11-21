@@ -39,7 +39,7 @@
 					</li>
 				</ul>
 				<!-- Image -->
-				<div class="col s8 l7" id="add-top-img">
+				<div class="col s8 l7 tooltipped" data-position="left" data-tooltip="Use a picture from images folder by typing its full name" id="add-top-img">
 					<div class="file-field input-field">
 						<div class="col s5 m4 l3 btn right" id="upload-button">
 							<span>Image</span>
@@ -60,11 +60,11 @@
 					<input id="cuisine" name="cuisine" type="text" class="validate" maxlength="20" required>
 					<label for="cuisine">Cuisine</label>
 				</div>
-				<!-- Vegeterian -->
+				<!-- Vegetarian -->
 				<div class="input-field col s4 l3">
 					<label id="edit-veg-label">
-						<input name="vegeterian" type="checkbox">
-						<span id="vegetarian-checkbox" class="form-checkbox">Vegeterian</span>
+						<input name="vegetarian" type="checkbox">
+						<span id="vegetarian-checkbox" class="form-checkbox">Vegetarian</span>
 					</label>
 				</div>
 				<!-- Hot -->
@@ -152,7 +152,7 @@ function mealClick(){
 	var inputValue = this.getAttribute('id');
 	document.getElementById("meal-type").setAttribute("value", inputValue);
 	document.getElementById("meal-type-span").textContent = inputValue;
-	document.getElementById("meal-type-span").style.color="black";
+	document.getElementById("meal-type-span").style.color = "black";
 }
 </script>
 {%endblock%}

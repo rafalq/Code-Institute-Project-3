@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway|Cabin|Roboto|Cormorant+Garamond|Bebas+Neue&display=swap');
 
+
+
 /*--------------------------------------------------------------*/
 					/* ----- base.html ----- */
 /*Home Header*/
@@ -220,6 +222,8 @@ span.base-badge-review{
 	margin-right: 10px;
 }	
 
+
+
 /*--------------------------------------------------------------*/
 					/* ----- home.html ----- */
 /*Flash Wrapper*/
@@ -275,6 +279,8 @@ span.card-title.found-title{
 	color: red;
 	font-size: 20px;
 }
+
+
 
 /*--------------------------------------------------------------*/
 					/* ----- share_your_recipe.html ----- */
@@ -366,6 +372,8 @@ span::before{
 	margin-top: 25px;
 	background-color: #00c853;	
 }
+
+
 
 /*--------------------------------------------------------------*/		
 					/* ----- edit_recipe.html ----- */
@@ -514,7 +522,7 @@ h5.edit-h.col{
 	color: #0d47a1;
 }
 #edit-ingredients{
-	height: 450px;
+	height: 300px;
 	padding: 10px;
 	color: rgba(0,0,0,0.67);
 }
@@ -534,6 +542,8 @@ h5.edit-h.col{
 #edit-submit-btn{
 	padding-left: 50px;
 }
+
+
 
 /*--------------------------------------------------------------*/
 					/* ----- update_recipe.html ----- */

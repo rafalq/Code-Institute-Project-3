@@ -68,7 +68,7 @@
 				<!-- Veg -->
 				<form class="base-form row">
 					<div class="base-cuisine-td veg-base-cuisine-td">
-						<a href="{{ url_for('vegeterian_recipes') }}" class="base-form-button-cuisine row col s12 vege-a center">Vegeterian	
+						<a href="{{ url_for('vegetarian_recipes') }}" class="base-form-button-cuisine row col s12 vege-a center">Vegetarian	
 							<span id="base-vege-badge" class="base-badge-cuisine badge col s2 right">{{veg_counter}}
 							</span>
 						</a>
@@ -130,7 +130,7 @@
 					<!-- 3 stars -->
 					<div class="base-review-td">
 						<form class="base-form row" action="{{ url_for('reviewed_recipes') }}" method="POST">
-							<input id="search_rate" type="hidden" name="search_rate" value="3">
+							<input type="hidden" name="search_rate" value="3">
 							<button class="base-button-review col s6 tooltipped left" data-position="right" data-tooltip="Good" type="submit" name="action">
 								<i class="base-review-star material-icons">star</i>
 								<i class="base-review-star material-icons">star</i>
@@ -163,7 +163,7 @@
 					<!-- no stars -->
 					<div class="base-review-td">
 						<form class="base-form row" action="{{ url_for('recipes_without_review')}}" method="POST" >
-							<input id="search_rate" type="hidden" name="search_rate" value="4">
+							<input type="hidden" name="search_rate" value="4">
 							<button class="base-button-review col s6 tooltipped left" data-position="right" data-tooltip="No reviews" type="submit" name="action">
 								<i class="base-review-star material-icons">star_border</i>
 								<span class="base-badge-review badge">{{no_review_counter}}</span>
@@ -177,16 +177,19 @@
 {% endblock %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script type="text/javascript">M.AutoInit();</script>
-<script>
-var elem = document.querySelector('.collapsible.expandable');
-var instance = M.Collapsible.init(elem, {
-  accordion: false
-});
 
-var found = document.getElementsByClassName("found-title");
-var foundAmount = found.length;
-document.getElementById("logo-span").textContent = foundAmount;
+<script type="text/javascript">M.AutoInit();</script>
+
+<script>
+	var elem = document.querySelector('.collapsible.expandable');
+	var instance = M.Collapsible.init(elem, {
+	  accordion: false
+	});
+	
+	var found = document.getElementsByClassName("found-title");
+	var foundAmount = found.length;
+	
+	document.getElementById("logo-span").textContent = foundAmount;
 </script>
 </body>
 </html>

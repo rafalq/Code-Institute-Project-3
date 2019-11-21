@@ -43,7 +43,7 @@
 						</li>
 					</ul>
 					<!-- Image -->
-					<div class="col s8 l7" id="add-top-img">
+					<div class="col s8 l7 tooltipped" data-position="left" data-tooltip="Use a picture from images folder by typing its full name" id="add-top-img">
 						<div class="file-field input-field">
 							<div class="col s5 l3 btn right" id="upload-button">
 								<span>Image</span>
@@ -66,15 +66,15 @@
 					</div>
 					<!-- Veg -->
 					<div class="input-field col s3">
-					{% if recipe.vegeterian %}
+					{% if recipe.vegetarian %}
 						<label>
-							<input name="vegeterian" type="checkbox" checked>
-							<span class="form-checkbox">Vegeterian</span>
+							<input name="vegetarian" type="checkbox" checked>
+							<span class="form-checkbox">Vegetarian</span>
 						</label>
 					{% else %}
 						<label>
-							<input name="vegeterian" type="checkbox">
-							<span class="form-checkbox">Vegeterian</span>
+							<input name="vegetarian" type="checkbox">
+							<span class="form-checkbox">Vegetarian</span>
 						</label>
 					{% endif %}
 					</div>
@@ -182,7 +182,7 @@ function mealClick(){
 	var inputValue = this.getAttribute('id');
 	document.getElementById("meal-type").setAttribute("value", inputValue);
 	document.getElementById("update-meal-type-span").textContent = inputValue;
-	document.getElementById("meal-type-span").style.color="black";
+	document.getElementById("meal-type-span").style.color = "black";
 }
 </script>
 

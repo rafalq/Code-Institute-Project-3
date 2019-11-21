@@ -5,7 +5,7 @@
 			<p id="found-text" class="col s12 center"></p>
 			
 			{% for recipe in recipes %}
-			{% if recipe.vegeterian %}
+			{% if recipe.vegetarian %}
 			<div class="cookbook-card-section card col s12 m4 left">
 					<div class="card-image waves-effect waves-block waves-light">
 						<img class="activator" src="../static/images/{{ recipe.image }}" alt="{{recipe.recipe_title}} Image">
@@ -39,8 +39,8 @@
 						<!---->	
 							<div class="col s6">
 									<div class="input-field col s3">
-										{% if recipe.vegeterian %}
-										<i id="card-veg" class="fas fa-carrot tooltipped" data-position="bottom" data-tooltip="Vegeterian"></i>
+										{% if recipe.vegetarian %}
+										<i id="card-veg" class="fas fa-carrot tooltipped" data-position="bottom" data-tooltip="Vegetarian"></i>
 										{% endif %}
 									</div>
 									<div class="input-field col s3">

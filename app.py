@@ -56,13 +56,13 @@ def home():
                 one_counter += 1
     """
     Statistical table
-    counts the amount of vegeterian recipes. 
+    counts the amount of vegetarian recipes. 
     """            
     for recipe in mongo.db.recipes.find({'votes': {'$exists' : False} }):
             no_review_counter += 1
     
-    for recipe in mongo.db.recipes.find({'vegeterian': {'$exists' : True} }):
-            if(recipe["vegeterian"] is not None):
+    for recipe in mongo.db.recipes.find({'vegetarian': {'$exists' : True} }):
+            if(recipe["vegetarian"] is not None):
                 veg_counter += 1
     
     return render_template('home.html', recipes=recipes, cuisines_all=cuisines_all,count_cuisines=count_cuisines, five_counter=five_counter, four_counter=four_counter, three_counter=three_counter, two_counter=two_counter, one_counter=one_counter, no_review_counter=no_review_counter, veg_counter=veg_counter, count_meals=count_meals)
@@ -90,15 +90,15 @@ def reviewed_recipes():
     count_cuisines = mongo.db.recipes.aggregate([ {'$group': { '_id': {"cuisine": "$cuisine"}, 'count': {'$sum': 1} } } ])
     return render_template('reviewed_recipes.html', recipes=recipes, search_score=search_score, count_cuisines=count_cuisines)
 
-@app.route('/vegeterian_recipes')
-def vegeterian_recipes():
+@app.route('/vegetarian_recipes')
+def vegetarian_recipes():
     """
     Homepage
     Statistical table
-    finds the amount of vegeterian recipes .
+    finds the amount of vegetarian recipes .
     """
     recipes = mongo.db.recipes.find()
-    return render_template('vegeterian_recipes.html', recipes=recipes)
+    return render_template('vegetarian_recipes.html', recipes=recipes)
 
     
 @app.route('/edit_recipe/<recipe_id>')
@@ -188,7 +188,7 @@ def update(recipe_id):
             'ingredients':request.form.get('ingredients'),
             'short':request.form.get('short'),
             'description':request.form.get('description'),
-            'vegeterian':request.form.get('vegeterian'),
+            'vegetarian':request.form.get('vegetarian'),
             'hot':request.form.get('hot'),
             'meal_type':request.form.get('meal_type'),
             'image':request.form.get('image')
