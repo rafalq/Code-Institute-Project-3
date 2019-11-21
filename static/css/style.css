@@ -384,7 +384,7 @@ span::before{
 input[type=text]:disabled{
 	border: none !important; 
 	font-size: 15px;
-	color: #424242 !important;
+	color: rgba(0,0,0,0.80) !important;
 }
 textarea:disabled{
 	border: none !important; 
@@ -524,7 +524,7 @@ h5.edit-h.col{
 #edit-ingredients{
 	height: 300px;
 	padding: 10px;
-	color: rgba(0,0,0,0.67);
+	color: rgba(0,0,0,0.80);
 }
 /*Tools*/
 #tools-p{
@@ -535,7 +535,7 @@ h5.edit-h.col{
 	height: auto;
 }
 #edit-description{
-	color: rgba(0,0,0,0.67);
+	color: rgba(0,0,0,0.80);
 	height: 300px;
 	padding: 10px;
 }
