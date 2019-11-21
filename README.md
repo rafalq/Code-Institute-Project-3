@@ -26,8 +26,11 @@ My goal was to create an online version of a cookbook that could be easy to use 
 ### Scope
 
 (User 1) I placed the statistical table on the home webpage to enable the user to find her/his recipe by a cuisine, a meal type or a review score.
+
 (User 2) I wanted to provide an easy way to update a recipe by changing the input text and confirming it with the Update button. The recipe can be deleted on the same webpage by using the `Delete` button.
+
 (User 3) I placed a link `Share Your Recipe` on the navigation bar which gets the user to a webpage where they can add their recipe by fullfiling a form.
+
 (User 4) I gave users a possibility to review any recipe by rating it in the rate section in the recipe page.
 
 ### Structure
