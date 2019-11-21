@@ -34,31 +34,31 @@ My goal was to create an online version of a cookbook that could be easy to use 
 
 The website consists of 9 pages:
 
-** base.html** and **base_for_form.html**
+**base.html** and **base_for_form.html**
 
 These webpages are inherited by the rest pages. Both of them have the title and a navigation bar which includes a search field, an  `Share Your Recipe` link.
 
 The `base.html` contains additionaly a badge with the amount of all recipes and a statistical table where you can find three categories: Cuisine, Meal Type, Ratings.
 
-** home.html **
+**home.html**
 
 This is a main webpage inherits base.html. It contains all added recipes that are displayed in three columns.
 
-**  recipes.html, reviewed_recipes.html, vegetarian_recipes.html **
+**recipes.html, reviewed_recipes.html, vegetarian_recipes.html**
 
 These are webages where users are directed to when they clicked any field in the statistical table. They display the recipes belong to the relevant category.
 
-**  edit_recipe.html **
+**edit_recipe.html**
 
 The website is an actual recipe description. It contains the navigation bar at the top and a few sections below. First - an image with a rating score and a short recipe description. Next to it we can find the recipe title, the author, a meal type, the kind of cuisine, a hot or vegetarian sign icons, a number of servings, cook and preparation time.
 
 There is `Rate the recipe` section lower. We find `Ingredients` next to an example of an advertisment. At the very bottom, there is `Method` section.
 
-** update_recipe.html **
+**update_recipe.html**
 
 When an user clicks one of these: the title, the author, the image, the `Ingredients` or the `Method` header, they are directed to the `update_recipe` webpage which is a form including the fullfilled recipe fields, that can be modified. There is a advertisment section in the middle of the page. At the very bottom, we can find two buttons: the green one updates the recipe and the grey one - delete it.
 
-** share_your_recipe.html **
+**share_your_recipe.html**
 
 Users can get there by clicking `Share Your Recipe` link in the navigation bar.
 The webpage is a blank form contains titled input fields, the default image and the `Submit` button.
@@ -109,15 +109,15 @@ The code I used creates a wildcard index on all fields so that way any word can 
 ```
 
 Next to the
-** "Go" **
+**Go**
 button which starts searching, there is  the
 
-** "Share Your Recipe" **
+**Share Your Recipe**
 link, which takes the user to a blank recipe form, and a red badge - with the number of all available recipes. 
 
 A little below, they can find
 
-the ** Statistics Table **
+the **Statistics Table**
 that includes three category:
 - Cuisine,
 - Meal Type,
@@ -164,7 +164,7 @@ By clicking any of the fields described above, the user is taken to the relevant
 
 The table is an accordion materialize element which is active when you reach the page. Each of the category header has a arrow button that hide the content when is pressed.
 
-the ** Card **
+the **Card**
 
 Every recipe on this page is diplayed in a card form that has an image at the top, the title, a "Read me..." link, a three vertical aligned dots icon.
 
@@ -195,7 +195,7 @@ I used the `<p>` element and javascript to display the number. Javascript sums u
 
 The page consists of five sections.
 
-** The app title and the navbar. **
+**The app title and the navbar**
 
 These elements are the same as those above.
 
@@ -219,7 +219,7 @@ The recipe title and the autor can be clicked to access the update page.
 
 The meal type, the cuisine, the servings, the preparation and the cooking time are displayed along with the name and the relevant icon.
 
-** Rate the Recipe ** section
+**Rate the Recipe** section
 
 To unclock the section, the user need to click one of the star icon that represents the rating from one to five. The vote button sends the score to the database.
 
@@ -268,7 +268,7 @@ After clicking the Vote button, we are taken to the home page where we can see t
 
 * The example of advertisment is designed to differentiate from the other content. I used a different color for the header and a different `<font-famiy>` for the text.
 
-** Bottom section **
+**Bottom section**
 
 The `Method` as the `Ingredients` section uses the same element to be recreated in the same way. The header is connected with the update page.
 
