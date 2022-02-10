@@ -1,5 +1,5 @@
 Click==7.0
-Django==2.2.26
+Django==2.2.27
 dnspython==1.16.0
 Flask==1.1.1
 Flask-PyMongo==2.3.0
