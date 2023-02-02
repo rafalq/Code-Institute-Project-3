@@ -13,5 +13,5 @@ PyMySQL==0.9.3
 pytz==2019.3
 virtualenv==16.7.5
 virtualenvwrapper-win==1.2.5
-Werkzeug==0.15.4
+Werkzeug==0.15.5
 WTForms==2.2.1
